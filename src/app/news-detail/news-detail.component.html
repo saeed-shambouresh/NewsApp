@@ -1,0 +1,38 @@
+<div class="container" *ngIf="currentNews$ |async as  currentNews">
+    <div class="row">
+        <div class="col">
+            <h4> {{currentNews.title}}</h4>
+        </div>
+        <div class="col-auto">
+            <a routerLink="/">
+                <h4>Back To Stories</h4>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <h6>Score: {{currentNews.score}}</h6>
+        </div>
+        <div class="col-auto">
+            <h6>Date: {{currentNews.date}}</h6>
+        </div>
+        <div class="col-auto">
+            <h6>Type: {{currentNews.type}}</h6>
+        </div>
+        <div class="col-auto">
+            <h6>Author: {{currentNews.author}}</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h5>Reactions</h5>
+            <ul class="tree">
+                <li *ngFor="let item of currentNews.commits" style="padding-bottom: 2rem;">
+                    <span class="commets"> {{item.by}} - {{item.date}} </span>
+                    <div class="commetsTxt" [innerHTML]="item.text"></div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="javascript:void(0)" routerLink="/">News App</a>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+            </ul>
+            <div *ngIf="currentUser$ | async as currentUser">
+                <h4 style="color: white;    font-size: 1.25rem;" *ngIf="currentUser.FullName">Welcome
+                    {{currentUser.FullName}} / <a href="javascript:void(0)" style="color: white;    font-size: 1.25rem;"
+                        (click)="logOut()">Logout</a>
+                </h4>
+
+            </div>
+        </div>
+    </nav>
+</header>

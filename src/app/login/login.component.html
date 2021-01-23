@@ -1,12 +1,12 @@
 <div class="container">
-    <h2 style="text-align: center;">Let's Get Started</h2>
+    <h3 style="text-align: center;">Let's Get Started</h3>
     <form [formGroup]="loginForm" (ngSubmit)="Login()">
         <div class="form-group">
             <label for="EmailAddress">Email address</label>
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <i class="fas fa-user"></i>
+                        <fa-icon [icon]="faUser"></fa-icon>
                     </div>
                 </div>
                 <input type="email" class="form-control" id="EmailAddress" formControlName="EmailAddress"
@@ -23,6 +23,7 @@
             <div class="input-group mb-2 mr-sm-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
+                        <fa-icon [icon]="faKey"></fa-icon>
                     </div>
                 </div>
                 <input [type]="hide ? 'password' : 'text'" class="form-control" id="Password" formControlName="Password"
@@ -30,9 +31,8 @@
 
                 <div class="input-group-append">
                     <div class="input-group-text">
-                        <!-- <mat-icon style="cursor: pointer;" matSuffix (click)="hide = !hide">{{hide ?
-                            'visibility_off' :
-                            'visibility'}}</mat-icon> -->
+                        <fa-icon style="cursor: pointer;" [icon]="hide?faEyeSlash :faEye" (click)="hide = !hide">
+                        </fa-icon>
                     </div>
                 </div>
             </div>

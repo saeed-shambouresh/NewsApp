@@ -10,7 +10,7 @@ export class AlertStateModel {
 @State<AlertStateModel>({
     name: 'Alert',
     defaults: {
-        Alert: { Message: "", Route: "", Title: "" },
+        Alert: undefined,
     }
 })
 @Injectable()

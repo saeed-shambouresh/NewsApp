@@ -1,0 +1,26 @@
+<td>
+    <h4 style="line-height: 2;text-align: center;"> {{news.score}}</h4>
+</td>
+<td>
+    <div class="row">
+        <div class="col-12">
+            <h4> {{news.title}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <h6>Date: {{news.date}}</h6>
+        </div>
+        <div class="col-auto">
+            <h6>Type: {{news.type}}</h6>
+        </div>
+        <div class="col-auto">
+            <h6>Author: {{news.author}}</h6>
+        </div>
+    </div>
+</td>
+<td>
+    <a href="javascipt:void(0)" [routerLink]="['/News', news.id]">
+        <fa-icon [icon]="fapapper" style="    font-size: 2rem;"></fa-icon>
+    </a>
+</td>

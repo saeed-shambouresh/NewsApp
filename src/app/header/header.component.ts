@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { AuthState } from '../states/Auth.state';
+import { IUserData } from '../Interface/UserData';
+import { Logout } from '../actions/Auth.action';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +11,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  @Select(AuthState.GetCurrentUser) currentUser$: Observable<IUserData>;
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
-
+  logOut() {
+    this.store.dispatch(new Logout());
+  }
 }
+

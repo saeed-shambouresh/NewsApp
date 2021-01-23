@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>Top Stories</h3>
+        </div>
+        <div class="col-auto">
+            <a href="javascript:void(0)" (click)="loadData()">
+                <fa-icon [icon]="faRefresh" style=" font-size: 2rem;"></fa-icon>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr app-news-item [news]="news" *ngFor="let news of topNews.slice((page - 1) * 10, page * 10); trackBy: trackByMethod"></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="fixed-table-pagination">
+                <div class="float-right pagination">
+                    <ul class="pagination">
+                        <li class="page-item page-pre"><a class="page-link" aria-label="previous page"
+                                href="javascript:void(0)" (click)="page=page ==1?1:page-1">‹</a></li>
+                        <li class="page-item " [ngClass]="{'active': page == i+1}"
+                            *ngFor="let item of  [].constructor( math.ceil(topNews.length / 10) > 10 ? 10: math.ceil(topNews.length / 10));let i=index">
+                            <a class="page-link" (click)="page=i+1" href="javascript:void(0)">{{i+1}}</a>
+                        </li>
+                        <li class="page-item " *ngIf="page>10 && page<math.ceil(topNews.length / 10)">
+                            <a class="page-link" href="javascript:void(0)">...</a>
+                        </li>
+                        <li class="page-item active" *ngIf="page>10 && page<math.ceil(topNews.length / 10)">
+                            <a class="page-link" href="javascript:void(0)">{{page}}</a>
+                        </li>
+                        <li class="page-item " *ngIf="math.ceil(topNews.length / 10) > 10">
+                            <a class="page-link" href="javascript:void(0)">...</a>
+                        </li>
+                        <li class="page-item " [ngClass]="{'active': page == math.ceil(topNews.length / 10)}"
+                            *ngIf="math.ceil(topNews.length / 10) > 10">
+                            <a (click)="page=math.ceil(topNews.length / 10)" class="page-link"
+                                href="javascript:void(0)">{{math.ceil(topNews.length / 10)}}</a>
+                        </li>
+                        <li class="page-item page-next"><a class="page-link" aria-label="next page"
+                                href="javascript:void(0)"
+                                (click)="page=page ==topNews.length?topNews.length:page+1">›</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

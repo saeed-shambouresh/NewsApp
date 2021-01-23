@@ -1,5 +1,11 @@
 <app-header></app-header>
-<app-login></app-login>
-<router-outlet></router-outlet>
-<ngx-loading [show]="IsLoading" [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }">
-</ngx-loading>
+<div style="margin-top: 70px;">
+    <router-outlet></router-outlet>
+</div>
+<div class="my-container" *ngIf="IsLoading$ | async as IsLoading">
+    <ngx-loading [show]="IsLoading" [config]="{ 
+      fullScreenBackdrop: true
+      }">
+    </ngx-loading>
+    <span class="text" *ngIf="IsLoading">Loading Data Please Wait!</span>
+</div>
